@@ -1,0 +1,19 @@
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class DbProperties {
+
+    public Properties readConfig() {
+        Properties properties = new Properties();
+
+        try (InputStream inputStream = new FileInputStream("src/main/resources/liquibase/.properties");){
+            properties.load(inputStream);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return properties;
+    }
+}
